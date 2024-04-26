@@ -1,0 +1,38 @@
+.productImage{
+    max-width:266.7px;
+    max-height:201.95;
+    border-radius: 15px;
+    width:auto;
+    height:auto;
+    background-color: #EDEDED;
+}
+
+.productsContainer{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:50px;
+    padding:20px;
+}
+
+.productName{
+    font-size: 30px;
+}
+
+.productPrice{
+    font-size:24px;
+}
+
+.productContainer{
+    display:flex;
+    border-color:#323232;
+    border-width:0px;
+    border-style:solid;
+    transition:0.3s;
+    justify-content: center;
+    padding:10px;
+    gap:10px;
+}
+
+.productContainer:hover{
+  border-width: 10px;
+}

@@ -1,0 +1,22 @@
+.add-button{
+    background-color: rgb(98, 231, 109);
+    border:none;
+    padding:10px;
+    font-size: 30px;
+    color:aliceblue;
+    border-radius: 10px;
+    cursor: pointer;
+    transition:0.3s;
+}
+
+.add-button:hover{
+    font-size:33px;
+    background-color: rgb(23, 82, 62);
+
+}
+
+.bayon-regular {
+    font-family: "Bayon", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }

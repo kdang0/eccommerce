@@ -1,0 +1,15 @@
+img{
+    height:500px;
+}
+
+.testing{
+    background-color: aquamarine;
+    border-radius: 10px;
+    width:300px;
+    cursor: pointer;
+}
+
+.test1{
+    display:flex;
+    justify-content: center;
+}

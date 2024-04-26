@@ -1,0 +1,43 @@
+.itemContainer{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+}
+
+.title{
+    font-size:60px;
+    color:#323232;
+}
+
+.cartContainer{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:50px;
+}
+
+.link{
+    text-decoration: none;
+    color:#FEFEFE;
+    font-size: 20px;
+}
+
+.button{
+    background: none;
+    background-color: #323232;
+    border:1px solid #323232;
+    border-radius: 10px;
+    padding:5px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.button:hover{
+    transform:scale(1.1);
+    background-color: #1b1b1b;
+}
+
+.totalCost{
+    font-size: 25px;
+}
