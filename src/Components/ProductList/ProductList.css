@@ -1,3 +1,5 @@
+
+/** move the universal classnames to top of directory **/
 .productImage{
     max-width:266.7px;
     max-height:201.95;
@@ -13,6 +15,17 @@
     gap:50px;
     padding:20px;
 }
+
+@media (max-width:428px){
+    .productImage{
+        max-width:200px;
+        max-height:200px;
+    }
+    .productsContainer{
+        grid-template-columns: 1fr;
+    }
+}
+
 
 .productName{
     font-size: 30px;

@@ -29,8 +29,8 @@ export const Cart = () => {
         </div> : 
         
         <span>
-          go back n cop my shit bitch
-        <img src={run} alt='gif'></img>  
+          
+        empty cart
         </span>
             }
       </div>

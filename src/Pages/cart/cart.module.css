@@ -41,3 +41,9 @@
 .totalCost{
     font-size: 25px;
 }
+
+@media(max-width:428px){
+    .cartContainer{
+        flex-direction: column;
+    }
+}

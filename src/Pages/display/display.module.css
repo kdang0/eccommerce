@@ -42,5 +42,9 @@
    font-size: 30px;
 }
 
-
+@media(max-width:428px){
+    .productContainer{
+        flex-direction: column;
+    }
+}
 

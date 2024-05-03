@@ -3,3 +3,9 @@
     color:#323232;
     margin:0;
 }
+
+@media (max-width:428px){
+    .sumthing-title {
+        font-size:78px;
+    }
+}

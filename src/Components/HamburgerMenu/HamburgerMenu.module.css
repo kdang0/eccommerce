@@ -1,0 +1,47 @@
+.menuWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.hamburgerMenu {
+    cursor: pointer;
+    width: 35px;
+    height: 30px;
+    position: relative;
+    outline: none;
+}
+
+.bar {
+    background-color: #f4f4f4;
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.top {
+    top: 5px;
+}
+
+.middle {
+    top: 13px;
+    opacity: 1;
+}
+
+.bottom {
+    top: 21px;
+}
+
+.hamburgerMenu.open .top {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburgerMenu.open .middle {
+    opacity: 0;
+}
+
+.hamburgerMenu.open .bottom {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
