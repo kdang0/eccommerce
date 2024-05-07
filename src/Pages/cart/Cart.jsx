@@ -4,7 +4,7 @@ import {ShopContext} from "../../Context/shop-context.jsx"
 import { Link } from 'react-router-dom';
 import cart from './cart.module.css';
 import {Toaster} from 'react-hot-toast'
-import run from "../../Components/Assets/run.gif"
+
 export const Cart = () => {
   const {cartItems} = useContext(ShopContext);
   const totalCost = (cart) => {

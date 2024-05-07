@@ -8,7 +8,7 @@ import {Orders} from "./Pages/orders/Orders"
 import {Admin} from "./Pages/admin/Admin"
 import {Display} from "./Pages/display/Display"
 import {Checkout} from "./Pages/checkout/Checkout"
-import { CheckoutRD } from "./Pages/cart/CheckoutRD";
+
 import { ShopContextProvider } from "./Context/shop-context";
 import { LoginPage } from './Pages/LoginPage/loginPage.jsx';
 import {SetNP} from './Pages/LoginPage/SetNP.jsx'

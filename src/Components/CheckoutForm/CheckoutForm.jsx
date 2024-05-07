@@ -5,7 +5,7 @@ import {
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
-
+import toast from 'react-hot-toast'
 export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
@@ -50,18 +50,21 @@ export default function CheckoutForm() {
     if (!stripe || !elements) {
       // Stripe.js hasn't yet loaded.
       // Make sure to disable form submission until Stripe.js has loaded.
+     
       return;
     }
 
     setIsLoading(true);
 
+
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
+        
         return_url: "http://localhost:3000",
       },
-    });
+    })
 
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to
@@ -73,7 +76,7 @@ export default function CheckoutForm() {
     } else {
       setMessage("An unexpected error occurred.");
     }
-
+    
     setIsLoading(false);
   };
 

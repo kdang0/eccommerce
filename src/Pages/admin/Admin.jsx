@@ -13,7 +13,7 @@ const client = generateClient();
 
 export const Admin = () => {
   const s3client = new S3Client({
-    region: 'us-east-1',
+    region: process.env.REACT_APP_REGION,
     credentials:{
       accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
       secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
@@ -27,7 +27,7 @@ export const Admin = () => {
   const createProduct = async (product) => {
    
     const command = new PutObjectCommand({
-      Bucket: 'test-bucket-ecc-one',
+      Bucket: process.env.REACT_APP_BUCKET_NAME,
       Key:product.file.name,
       Body: product.file,
       ContentType: product.file.type

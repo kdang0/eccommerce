@@ -11,7 +11,6 @@ import add from "../Assets/add_cart.png"
 import './ProductCatalog.css'
 export const ProductCatalog = () => {
     const [products, setProducts] = useState([]);
-    const bucketName = 'test-bucket-ecc-one';
     const {addToCart} = useContext(ShopContext);
   
     useEffect(() => {
@@ -72,14 +71,13 @@ export const ProductCatalog = () => {
         }
       });
 
-      const grabImage = (bucketName, imageKey) =>{
-        const region = 'us-east-1';
-        const url = `https://${bucketName}.s3.${region}.amazonaws.com/${encodeURIComponent(imageKey)}`;
+      const grabImage = (imageKey) =>{
+        const url = `https://d2e64dv9223u3l.cloudfront.net/${encodeURIComponent(imageKey)}`;
         return url;
       }
 
       const productElements = products?.map((product,i) => {
-        const imageUrl = grabImage(bucketName, product.imageMetaData);
+        const imageUrl = grabImage(product.imageMetaData);
         product['imgSrc'] = imageUrl;
         return(
           <Link className='productContainer' key={i} to={`/display/${product.SK}`}>         

@@ -12,7 +12,7 @@ import { PutObjectCommand, DeleteObjectCommand, S3Client } from "@aws-sdk/client
 import './ProductList.css'
 export const ProductList = () => {
     const [products, setProducts] = useState([]);
-    const bucketName = 'test-bucket-ecc-one';
+
     useEffect(() => {
       const client = generateClient();
       async function fetchData(){
@@ -147,14 +147,13 @@ export const ProductList = () => {
     }
 
     //grab image URL from s3 bucket
-    const grabImage = (bucketName, imageKey) =>{
-      const region = 'us-east-1';
-      const url = `https://${bucketName}.s3.${region}.amazonaws.com/${encodeURIComponent(imageKey)}`;
+    const grabImage = (imageKey) =>{
+      const url = `https://d2e64dv9223u3l.cloudfront.net/${encodeURIComponent(imageKey)}`;
       return url;
     }
 
     const productElements = products?.map((product,i) => {
-      const imageUrl = grabImage(bucketName, product.imageMetaData);
+      const imageUrl = grabImage(product.imageMetaData);
       return(
         <div key={i}>
           {product.isEditing ? (

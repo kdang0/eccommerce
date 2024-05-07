@@ -9,11 +9,9 @@ import {useSpring, animated, useChain, useSpringRef} from 'react-spring'
 export const Display = () => {
     const {addToCart} = useContext(ShopContext);
     const {id} = useParams();
-    const bucketName = 'test-bucket-ecc-one';
     const [product, setProduct] = useState(null);
-    const grabImage = (bucketName, imageKey) =>{
-        const region = 'us-east-1';
-        const url = `https://${bucketName}.s3.${region}.amazonaws.com/${encodeURIComponent(imageKey)}`;
+    const grabImage = (imageKey) =>{
+        const url = `https://d2e64dv9223u3l.cloudfront.net/${encodeURIComponent(imageKey)}`;
         // setProduct(product => {return {...product, imgSrc:url}}); 
         return url;
       }
@@ -38,7 +36,7 @@ export const Display = () => {
             const result = await grabProduct(id);
             console.log(result.data.getProduct);
             const product = result.data.getProduct;
-            const imgUrl = grabImage(bucketName, product.imageMetaData);
+            const imgUrl = grabImage(product.imageMetaData);
             product.imgSrc = imgUrl;
             setProduct(product);
         }

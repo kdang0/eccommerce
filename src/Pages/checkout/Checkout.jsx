@@ -5,6 +5,7 @@ import {ShopContext} from "../../Context/shop-context.jsx"
 import {loadStripe} from '@stripe/stripe-js';
 import {Elements} from '@stripe/react-stripe-js';
 import {TailSpin} from 'react-loader-spinner'
+import checkout from './Checkout.module.css'
 import { v4 as uuid } from "uuid";
 const stripePromise = loadStripe(process.env.REACT_APP_PK_STRIPE);
 export const Checkout = () => {
@@ -12,6 +13,7 @@ export const Checkout = () => {
   const {cartItems} = useContext(ShopContext);
   const history = useNavigate();
   const unique_id = uuid();
+  const [cartInfo, setCartInfo] = useState({});
   useEffect(() => {
     const fetchSessionToken = async () => {
       try{
@@ -23,6 +25,7 @@ export const Checkout = () => {
         const data = await response.json();
         console.log("DATA", data);
         setClientSecret(data.clientSecret);
+        setCartInfo((prev) => ({...prev , "total":data.amount, "cart": data.cartItems}));
         history(`/checkout/${unique_id}`);
       } catch(error){
         console.error('Failed to fetch data: ',  error);
@@ -60,8 +63,20 @@ if(!!!clientSecret){
   )
 } 
     return (
-    <Elements options={options} stripe={stripePromise}>
-            <CheckoutForm/>
-    </Elements>
+      <div className={`${checkout.flex}`}>
+        <Elements options={options} stripe={stripePromise}>
+                <CheckoutForm/>
+        </Elements>
+        <div>
+          {
+            cartInfo.cart?.map((product, i) => {
+              const cost = product.price * product.quantity
+              return <p className={`bayon-regular`}key={i}>{product.name} <span id={`${checkout.quantity}`}>{product.quantity}</span><span id={`${checkout.multiplier}`}>x</span>: ${cost}</p>
+            })
+          }
+          <hr></hr>
+          <p className={`bayon-regular`}>Total: ${cartInfo.total}</p>
+        </div>
+      </div>
   )
 }
