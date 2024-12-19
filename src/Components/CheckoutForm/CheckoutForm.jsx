@@ -5,7 +5,7 @@ import {
   useStripe,
   useElements
 } from "@stripe/react-stripe-js";
-import toast from 'react-hot-toast'
+
 export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();

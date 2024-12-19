@@ -48,3 +48,17 @@
     }
 }
 
+
+.descContainer p{
+    max-width:300px;
+}
+
+.infContainer {
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.description{
+    font-size: small;
+}

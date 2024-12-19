@@ -49,3 +49,11 @@
 .productContainer:hover{
   border-width: 10px;
 }
+
+
+.description p{
+    width: 50px;            /* Set a fixed width or max-width as needed */
+    white-space: nowrap;     /* Ensure the text stays on a single line */
+    overflow: hidden;        /* Hide overflow text */
+    text-overflow: ellipsis
+}

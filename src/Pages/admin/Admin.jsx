@@ -7,16 +7,18 @@ import {generateClient} from 'aws-amplify/api'
 import {addProduct} from "../../graphql/mutations.js"
 
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
-
+import {secret} from '../../api/secretsManager.js'
 // const { fromEnv } = require("@aws-sdk/credential-providers"); // CommonJS import
-const client = generateClient();
 
+//Generates appsync client 
+const client = generateClient();
+const process = await secret();
 export const Admin = () => {
   const s3client = new S3Client({
-    region: process.env.REACT_APP_REGION,
+    region: process.REACT_APP_REGION,
     credentials:{
-      accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
-      secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+      accessKeyId: process.REACT_APP_AWS_ACCESS,
+      secretAccessKey: process.REACT_APP_AWS_SECRET_ACCESS_KEY,
     }
   });
 
@@ -27,7 +29,7 @@ export const Admin = () => {
   const createProduct = async (product) => {
    
     const command = new PutObjectCommand({
-      Bucket: process.env.REACT_APP_BUCKET_NAME,
+      Bucket: process.REACT_APP_BUCKET_NAME,
       Key:product.file.name,
       Body: product.file,
       ContentType: product.file.type

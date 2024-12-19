@@ -6,8 +6,11 @@ import {loadStripe} from '@stripe/stripe-js';
 import {Elements} from '@stripe/react-stripe-js';
 import {TailSpin} from 'react-loader-spinner'
 import checkout from './Checkout.module.css'
+import {secret} from '../../api/secretsManager.js';
 import { v4 as uuid } from "uuid";
-const stripePromise = loadStripe(process.env.REACT_APP_PK_STRIPE);
+
+const process = await secret();
+const stripePromise = loadStripe(process.REACT_APP_PK_STRIPE);
 export const Checkout = () => {
   const [clientSecret, setClientSecret] = useState('');
   const {cartItems} = useContext(ShopContext);

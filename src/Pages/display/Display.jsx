@@ -34,7 +34,6 @@ export const Display = () => {
     useEffect(() => {
         async function displayProduct(){
             const result = await grabProduct(id);
-            console.log(result.data.getProduct);
             const product = result.data.getProduct;
             const imgUrl = grabImage(product.imageMetaData);
             product.imgSrc = imgUrl;
@@ -65,10 +64,12 @@ export const Display = () => {
         <animated.div style={propsImage}>
         <img className={`${display.image}`}src={product.imgSrc} alt='product'></img>
         </animated.div>
-        <animated.div style={propsName}>
+        <animated.div className={`${display.infContainer}`}style={propsName}>
         <h1 className={`bayon-regular ${display.title}`}>{product.name}</h1>
         <p className={`bayon-regular ${display.price}`}>${product.price}</p>
-        <p className={`bayon-regular`}>{product.description}</p>
+        <div className={`${display.descContainer}`}>
+        <p className={`${display.description}`}>{product.description}</p>
+        </div>
         <button className={`bayon-regular ${display.button}`} onClick={(e) => addToCart(e, product)}>add to cart</button>
         </animated.div>
 

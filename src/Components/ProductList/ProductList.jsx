@@ -8,8 +8,10 @@ import {Form} from '../Form/Form.tsx';
 import * as subscriptions from '../../graphql/subscriptions.js';
 import {DeleteBtn} from '../../Components/DeleteBtn/DeleteBtn.jsx';
 import { PutObjectCommand, DeleteObjectCommand, S3Client } from "@aws-sdk/client-s3";
-
+import {secret} from '../../api/secretsManager.js'
 import './ProductList.css'
+const process = await secret();
+
 export const ProductList = () => {
     const [products, setProducts] = useState([]);
 
@@ -86,17 +88,17 @@ export const ProductList = () => {
       const client = generateClient();
       
       const s3client = new S3Client({
-        region: 'us-east-1',
+        region: process.REACT_APP_REGION,
         credentials:{
-          accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
-          secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+          accessKeyId: process.REACT_APP_AWS_ACCESS,
+          secretAccessKey: process.REACT_APP_AWS_SECRET_ACCESS_KEY,
         }
       });
 
       let productDetails;
       if(product.file){
         const deleteCommand = new DeleteObjectCommand({
-          Bucket: 'test-bucket-ecc-one',
+          Bucket: process.REACT_APP_BUCKET_NAME,
           Key: product.imageMetaData
         });
   
@@ -108,7 +110,7 @@ export const ProductList = () => {
         }
         
         const putCommand = new PutObjectCommand({
-          Bucket: 'test-bucket-ecc-one',
+          Bucket: process.REACT_APP_BUCKET_NAME,
           Key:product.file.name,
           Body: product.file,
           ContentType: product.file.type
@@ -163,7 +165,9 @@ export const ProductList = () => {
                 <img className="productImage" src={imageUrl} alt='product'></img>
                 <p className='bayon-regular productName'>{product.name}</p>
                 <p className='bayon-regular productPrice'>${product.price}</p>
-                <p className='bayon-regular'>{product.description}</p>
+                <div className='description'> 
+                  <p className='bayon-regular'>{product.description}</p>
+                </div>
                 <div>
                   <button onClick={() => handleEdit(product.SK)}>edit</button>
                   <DeleteBtn productPK = {product.PK} productSK={product.SK}/>

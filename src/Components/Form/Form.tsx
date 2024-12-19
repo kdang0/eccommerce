@@ -33,7 +33,7 @@ export const Form = (props) => {
         <input type="number" value={product.price} onChange={e => setProduct({...product, price: e.target.value})}/>
         </label>
         <label>Description: 
-        <input type="text" value={product.description} onChange= {e => setProduct({...product, description: e.target.value})}/>
+        <textarea value={product.description} onChange= {e => setProduct({...product, description: e.target.value})}></textarea>
         </label>
         <label>
             <div {...getRootProps()} className="test1">

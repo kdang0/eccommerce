@@ -1,4 +1,4 @@
-import { CognitoIdentityProviderClient, InitiateAuthCommand, RespondToAuthChallengeCommand } from "@aws-sdk/client-cognito-identity-provider";
+import { CognitoIdentityProviderClient, InitiateAuthCommand, RespondToAuthChallengeCommand, RespondToAuthChallengeCommandInput } from "@aws-sdk/client-cognito-identity-provider";
 import config from "./config.json";
 type AuthFlowType = 'USER_PASSWORD_AUTH' | 'REFRESH_TOKEN_AUTH' | 'CUSTOM_AUTH' | 'ADMIN_NO_SRP_AUTH';
 type ChallengeNameType = "NEW_PASSWORD_REQUIRED"
@@ -38,7 +38,7 @@ export const signIn = async (username: string, password: string) => {
 };
 
 export const handleNPChallenge = async (password:string) => {
-    const params = {
+    const params : RespondToAuthChallengeCommandInput = {
       ChallengeName: "NEW_PASSWORD_REQUIRED" as ChallengeNameType,
       ClientId: config.clientId,
       ChallengeResponses: {
